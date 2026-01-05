@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PAF Achievements — Split Command View</title>
+  <style>
+
+    /* Soviet-Afghan War background */
+#ach-afghan {
+  position: relative;
+  background: url('images/afghan-bg.jpg') center center / cover no-repeat;
+  border-radius: 12px;
+  padding: 20px;
+  overflow: hidden;
+}
+#ach-afghan::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25); /* subtle overlay */
+  z-index: 0;
+}
+#ach-afghan > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Operation Swift Retort background */
+#ach-swift {
+  position: relative;
+  background: url('images/swift-bg.jpg') center center / cover no-repeat;
+  border-radius: 12px;
+  padding: 20px;
+  overflow: hidden;
+}
+#ach-swift::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 0;
+}
+#ach-swift > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* War on Terror background */
+#ach-terror {
+  position: relative;
+  background: url('images/terror-bg.jpg') center center / cover no-repeat;
+  border-radius: 12px;
+  padding: 20px;
+  overflow: hidden;
+}
+#ach-terror::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 0;
+}
+#ach-terror > * {
+  position: relative;
+  z-index: 1;
+}
+
+    /* Background image for 1971 section */
+#ach-1971 {
+  position: relative;
+  background: url('images/1971-bg.jpg') center center / cover no-repeat;
+  border-radius: 12px;
+  padding: 20px;
+  overflow: hidden;
+}
+#ach-1971::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25); /* subtle dark overlay */
+  z-index: 0;
+}
+#ach-1971 > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Background image for Middle East section */
+#ach-middle {
+  position: relative;
+  background: url('images/middle-east-bg.jpg') center center / cover no-repeat;
+  border-radius: 12px;
+  padding: 20px;
+  overflow: hidden;
+}
+#ach-middle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25); /* subtle dark overlay */
+  z-index: 0;
+}
+#ach-middle > * {
+  position: relative;
+  z-index: 1;
+}
+
+    /* Background image for the display panel */
+.display-panel {
+  position: relative;
+  background: url('images/background.jpg') center center / cover no-repeat;
+  padding: 40px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Semi-transparent overlay to soften background image */
+.display-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25); /* adjust opacity here */
+  z-index: 0;
+}
+
+/* Ensure content sits above overlay */
+.display-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Achievement styling */
+.achievement {
+  margin-bottom: 40px;
+}
+.achievement img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.overlay-title {
+  font-size: 2rem;
+  color: #00ffcc;
+  margin-bottom: 10px;
+}
+.mission-file {
+  background: #111;
+  border: 1px solid #1f2a3d;
+  color: #0ff;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+.bullets {
+  list-style: none;
+  padding: 0;
+}
+.bullets li {
+  margin: 8px 0;
+  padding-left: 16px;
+  position: relative;
+}
+.bullets li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: #00ffcc;
+  font-weight: 900;
+}
+
+/* Video behind cards */
+.tech-video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+.tech-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Section styling */
+#ach-tech {
+  position: relative;
+  z-index: 1;
+  background: rgba(10, 15, 28, 0.85); /* overlay tint for readability */
+  padding: 40px 20px;
+}
+
+/* Card styling */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.tech-card {
+  background: rgba(17, 17, 17, 0.9);
+  border: 1px solid #263044;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  color: #fff;
+}
+.tech-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.tech-card span {
+  font-size: 2rem;
+  color: #00ffcc;
+}
+.tech-card h3 {
+  margin: 8px 0;
+  color: #00ffcc;
+}
+.tech-card p {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+/* Hover effects for cards */
+.tech-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 255, 204, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Overlay effect to improve text readability over video */
+#ach-tech::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 15, 28, 0.6); /* dark overlay tint */
+  z-index: 0;
+}
+
+/* Ensure section content sits above video and overlay */
+.tech-section {
+  position: relative;
+  z-index: 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .tech-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .tech-card {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  #ach-tech {
+    padding: 20px 10px;
+  }
+  .tech-card img {
+    margin-bottom: 8px;
+  }
+  .tech-card h3 {
+    font-size: 1rem;
+  }
+  .tech-card p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+  .tech-card span {
+    font-size: 1.5rem;
+  }
+}
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0a0f1c;
+      color: #fff;
+      display: flex;
+      height: 100vh;
+    }
+
+    /* LEFT NAVIGATION COLUMN */
+    .nav-column {
+      width: 28%;
+      background: #111;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border-right: 1px solid #1f2a3d;
+    }
+    .nav-header {
+      margin-bottom: 12px;
+      color: #00e6c3;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 12px;
+      cursor: pointer;
+      border-left: 4px solid transparent;
+      background: #151515;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+      border-radius: 6px;
+    }
+    .nav-item:hover { transform: translateX(2px); }
+    .nav-item.active {
+      border-left-color: #00ffcc;
+      background: #1c1c1c;
+      box-shadow: inset 0 0 10px rgba(0,255,204,0.3);
+    }
+    .nav-item .icon {
+      font-size: 1.2rem;
+      color: #00ffcc;
+      min-width: 24px;
+      text-align: center;
+    }
+    .nav-item .texts {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .nav-item .title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #fff;
+    }
+    .nav-item .meta {
+      font-size: 0.8rem;
+      color: #a9b2c3;
+    }
+
+    /* RIGHT DISPLAY PANEL */
+    .display-panel {
+      width: 72%;
+      padding: 28px;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    /* Achievements visibility control */
+    .achievement { display: none; }
+    .achievement.active { display: block; }
+
+    .achievement {
+      animation: fadeIn 0.6s ease;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .achievement img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 14px;
+    }
+    .overlay-title {
+      font-size: 2rem;
+      color: #00ffcc;
+      margin: 8px 0 12px 0;
+      font-weight: 800;
+    }
+    .mission-file {
+      background: #111;
+      border: 1px solid #1f2a3d;
+      color: #0ff;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .bullets li {
+      margin: 8px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .bullets li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #00ffcc;
+      font-weight: 900;
+    }
+
+    /* Tech section */
+    .tech-section {
+      margin-top: 24px;
+      background: #10151f;
+      border: 1px solid #1f2a3d;
+      border-radius: 12px;
+      padding: 22px;
+    }
+    .tech-section h2 {
+      text-align: center;
+      color: #00ffcc;
+      margin-bottom: 18px;
+      font-size: 1.6rem;
+    }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .tech-card {
+      background: #151c27;
+      border: 1px solid #263044;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .tech-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 255, 204, 0.08);
+    }
+    .tech-card span {
+      display: block;
+      font-size: 1.8rem;
+      color: #00ffcc;
+      margin-bottom: 8px;
+    }
+    .tech-card h3 {
+      margin: 8px 0;
+      font-size: 1.05rem;
+      color: #e8f1ff;
+    }
+    .tech-card p {
+      font-size: 0.9rem;
+      color: #a9b2c3;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 980px) {
+      body { flex-direction: column; height: auto; }
+      .nav-column, .display-panel { width: 100%; }
+      .nav-column { border-right: none; border-bottom: 1px solid #1f2a3d; }
+      .achievement img { max-height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LEFT NAVIGATION -->
+  <aside class="nav-column">
+    <div class="nav-header">MISSION ARCHIVE</div>
+    <div class="nav-item active" data-target="ach-1965"><div class="icon">✈️</div><div class="texts"><div class="title">1965 Air War</div><div class="meta">Indo-Pak War</div></div></div>
+    <div class="nav-item" data-target="ach-alam"><div class="icon">🎯</div><div class="texts"><div class="title">M.M. Alam</div><div class="meta">World Record</div></div></div>
+    <div class="nav-item" data-target="ach-1971"><div class="icon">🛡️</div><div class="texts"><div class="title">1971 War</div><div class="meta">Indo-Pak War</div></div></div>
+    <div class="nav-item" data-target="ach-middle"><div class="icon">🌍</div><div class="texts"><div class="title">Middle East</div><div class="meta">1967 & 1973</div></div></div>
+    <div class="nav-item" data-target="ach-afghan"><div class="icon">✈️</div><div class="texts"><div class="title">Soviet-Afghan</div><div class="meta">1980s</div></div></div>
+    <div class="nav-item" data-target="ach-swift"><div class="icon">🚀</div><div class="texts"><div class="title">Swift Retort</div><div class="meta">2019</div></div></div>
+    <div class="nav-item" data-target="ach-terror"><div class="icon">🛰️</div><div class="texts"><div class="title">War on Terror</div><div class="meta">2000s</div></div></div>
+    <div class="nav-item" data-target="ach-tech"><div class="icon">⚙️</div><div class="texts"><div class="title">Technological Excellence</div><div class="meta">Modern Era</div></div></div>
+  </aside>
+
+ <!-- RIGHT DISPLAY PANEL -->
+<main class="display-panel">
+
+  <!-- 1965 Indo-Pakistan War -->
+  <section class="achievement active" id="ach-1965">
+    <img src="images/1965.jpg" alt="1965 Indo-Pakistan War"/>
+    <h1 class="overlay-title">1965 Indo-Pakistan War</h1>
+    <div class="mission-file">MISSION: Air Superiority | ERA: 1965 | STATUS: Successful | SIGNIFICANCE: Strategic Victory</div>
+    <ul class="bullets">
+      <li>Defended national airspace</li>
+      <li>Conducted strikes on enemy airfields</li>
+      <li>Halted enemy advances</li>
+    </ul>
+  </section>
+
+  <!-- M.M. Alam’s World Record -->
+  <section class="achievement" id="ach-alam">
+    <img src="images/mm-alam.jpg" alt="M.M. Alam"/>
+    <h1 class="overlay-title">M.M. Alam’s World Record</h1>
+    <div class="mission-file">MISSION: Air Combat | ERA: 1965 | STATUS: Legendary | SIGNIFICANCE: Global Record</div>
+    <ul class="bullets">
+      <li>Shot down five IAF Hunters in a single sortie</li>
+      <li>Four kills achieved in under one minute</li>
+      <li>One of the most remarkable air combat records in aviation history</li>
+    </ul>
+  </section>
+
+
+   <!-- 1971 Indo-Pakistan War -->
+<section class="achievement" id="ach-1971">
+  <img src="images/1971.jpg" alt="1971 Indo-Pakistan War"/>
+  <h1 class="overlay-title">1971 Indo-Pakistan War</h1>
+  <div class="mission-file">MISSION: Multi-Front Operations | ERA: 1971 | STATUS: Challenging | SIGNIFICANCE: Tactical Victories</div>
+  <ul class="bullets">
+    <li>Introduced Mirage III/5 and F-6 fighters into combat</li>
+    <li>Achieved multiple aerial victories on the western front</li>
+    <li>Maintained effective air operations despite constraints</li>
+  </ul>
+</section>
+
+<!-- Middle East Conflicts -->
+<section class="achievement" id="ach-middle">
+  <img src="images/middle-east.jpg" alt="Middle East Conflicts"/>
+  <h1 class="overlay-title">Middle East Conflicts (1967 & 1973)</h1>
+  <div class="mission-file">MISSION: Allied Support | ERA: 1967 & 1973 | STATUS: Distinguished | SIGNIFICANCE: International Recognition</div>
+  <ul class="bullets">
+    <li>Pakistani pilots served with allied Arab air forces</li>
+    <li>Flight Lt. Saiful Azam shot down Israeli aircraft in two wars</li>
+    <li>Highest-scoring pilot against the Israeli Air Force</li>
+  </ul>
+</section>
+
+
+    <!-- Soviet-Afghan War -->
+    <section class="achievement" id="ach-afghan">
+      <img src="images/afghan-war.jpg" alt="Soviet-Afghan War"/>
+      <h1 class="overlay-title">Soviet-Afghan War (1980s)</h1>
+      <div class="mission-file">MISSION: Air Defense | ERA: 1980s | STATUS: Successful | SIGNIFICANCE: Countered Superpower Presence</div>
+      <ul class="bullets">
+        <li>PAF F-16s intercepted intruding Soviet and Afghan aircraft</li>
+        <li>Defended national airspace against repeated violations</li>
+        <li>Demonstrated strong readiness and deterrence</li>
+      </ul>
+    </section>
+
+    <!-- Operation Swift Retort -->
+    <section class="achievement" id="ach-swift">
+      <img src="images/swift-retort.jpg" alt="Operation Swift Retort"/>
+      <h1 class="overlay-title">Operation Swift Retort (2019)</h1>
+      <div class="mission-file">MISSION: Precision Response | ERA: 2019 | STATUS: Successful | SIGNIFICANCE: Credible Deterrence</div>
+      <ul class="bullets">
+        <li>Calibrated and precise response to Indian airstrike</li>
+        <li>Downed IAF MiG-21</li>
+        <li>Captured enemy pilot</li>
+        <li>Integrated EW, C2, precision targeting, and situational awareness</li>
+      </ul>
+    </section>
+
+    <!-- War on Terror -->
+    <section class="achievement" id="ach-terror">
+      <img src="images/war-on-terror.jpg" alt="War on Terror"/>
+      <h1 class="overlay-title">War on Terror & Counter-Insurgency</h1>
+      <div class="mission-file">MISSION: Counter-Insurgency | ERA: 2000s | STATUS: Ongoing | SIGNIFICANCE: National Security</div>
+      <ul class="bullets">
+        <li>Played a key role in Zarb-e-Azb and Radd-ul-Fasaad</li>
+        <li>Conducted precision strikes with fighter aircraft and UAVs</li>
+        <li>Achieved objectives with minimal collateral damage</li>
+      </ul>
+    </section>
+
+   <!-- Technological & Professional Excellence -->
+<section class="achievement" id="ach-tech">
+  <div class="tech-video-wrapper">
+    <video autoplay muted loop controls class="tech-video">
+      <source src="videos/tech-background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <div class="tech-section">
+    <h2>⚙️ Technological & Professional Excellence</h2>
+    <div class="tech-grid">
+
+      <div class="tech-card">
+        <img src="images/jf17.jpg" alt="JF-17 Thunder">
+        <span>✈️</span>
+        <h3>JF-17 Thunder</h3>
+        <p>Indigenous multirole fighter developed with PAC & China.</p>
+      </div>
+
+      <div class="tech-card">
+        <img src="images/j10c.jpg" alt="Modernization">
+        <span>🚀</span>
+        <h3>Modernization</h3>
+        <p>JF-17 Block-III, J-10C, AEW&C, aerial refueling platforms.</p>
+      </div>
+
+      <div class="tech-card">
+        <img src="images/riat-trophy.jpg" alt="International Recognition">
+        <span>🏆</span>
+        <h3>International Recognition</h3>
+        <p>RIAT 2025 trophies for C-130 & JF-17 Block-III.</p>
+      </div>
+
+      <div class="tech-card">
+        <img src="images/global-standing.jpg" alt="Global Standing">
+        <span>🌍</span>
+        <h3>Global Standing</h3>
+        <p>Ranked among top air forces worldwide for readiness & discipline.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <script>
+    const navItems = document.querySelectorAll('.nav-item');
+    const achievements = document.querySelectorAll('.achievement');
+
+    function showAchievement(id) {
+      achievements.forEach(a => a.classList.remove('active'));
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.add('active');
+        document.querySelector('.display-panel').scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navItems.forEach(n => n.classList.remove('active'));
+        item.classList.add('active');
+        showAchievement(item.getAttribute('data-target'));
+      });
+    });
+
+    // Ensure initial state is consistent
+    const initialActiveNav = document.querySelector('.nav-item.active');
+    if (initialActiveNav) {
+      const initialId = initialActiveNav.getAttribute('data-target');
+      showAchievement(initialId);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>History | Wings of Valor – Pakistan Air Force</title>
+  <style>
+    body { margin:0; font-family: 'Segoe UI', Arial, sans-serif; background:#0a1020; color:#333; }
+
+    header, footer { background:#002147; color:#fff; padding:15px; text-align:center; }
+    nav a, footer a { color:#fff; margin:0 10px; text-decoration:none; }
+
+    /* Parallax Hero */
+    .hero {
+      position: relative;
+      height: 60vh;
+      background: url('assets/images/jet1.jpg') center/cover fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3em;
+      animation: fadeInDown 2s ease;
+    }
+    @keyframes fadeInDown {
+      from { opacity:0; transform: translateY(-50px); }
+      to { opacity:1; transform: translateY(0); }
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      margin: 50px auto;
+      padding: 20px 0;
+      width: 90%;
+    }
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background: #007BFF;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+
+    /* Responsive timeline cards with animated borders */
+    .timeline-card {
+      position: relative;
+      width: 45%;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 20px 0;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 3px solid transparent;
+      background-clip: padding-box;
+    }
+    .timeline-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      border-image: linear-gradient(45deg, #007BFF, #FFD700, #00C9A7) 1;
+    }
+    .timeline-card.left { left: 0; }
+    .timeline-card.right { left: 55%; }
+    .timeline-card h3 { color:#007BFF; margin-bottom:10px; }
+    .timeline-card p { font-size:15px; line-height:1.6; }
+
+    /* Responsive layout for smaller screens */
+    @media (max-width: 768px) {
+      .timeline-card {
+        width: 90%;
+        left: 0 !important;
+      }
+      .timeline::after { left: 20px; }
+    }
+
+    /* Floating icons */
+    .timeline-card::before {
+      content: "✈️";
+      position: absolute;
+      top: -10px;
+      font-size: 24px;
+    }
+    .timeline-card.left::before { right: -30px; }
+    .timeline-card.right::before { left: -30px; }
+
+    /* Modal with new background and animation */
+    .modal-backdrop {
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.6); display:none;
+      justify-content:center; align-items:center;
+      z-index: 1000;
+    }
+    .modal {
+      position: relative;
+      background: url('assets/images/jet-modern.jpg') center/cover no-repeat;
+      border-radius: 16px;
+      max-width: 800px;
+      width: 90%;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      color: #fff;
+      animation: zoomIn 0.5s ease;
+    }
+    .modal::before {
+      content: "";
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.65);
+      border-radius: 16px;
+    }
+    @keyframes zoomIn {
+      from { opacity:0; transform: scale(0.8); }
+      to { opacity:1; transform: scale(1); }
+    }
+    .modal-header, .modal-body {
+      position: relative;
+      z-index: 2;
+    }
+    .modal-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 0;
+      color: #FFD700;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    }
+    .modal-body {
+      margin-top: 20px;
+      font-size: 18px;
+      line-height: 1.8;
+      text-align: justify;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 32px;
+      cursor: pointer;
+      color: #fff;
+      z-index: 3;
+      transition: transform 0.3s ease;
+    }
+    .modal-close:hover {
+      transform: rotate(90deg);
+    }
+
+    /* Reveal animation */
+    .reveal { opacity:0; transform: translateY(50px); transition: all 0.8s ease; }
+    .reveal.active { opacity:1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Wings of Valor – Pakistan Air Force</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="history.html">History</a>
+      <a href="strength.html">Strength</a>
+      <a href="aircraft.html">Visual Gallery</a>
+      <a href="achievements.html">Achievements</a>
+      <a href="actions.html">Wings In Actions</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Parallax Hero -->
+  <section class="hero">
+    <h1>Evolution of the Pakistan Air Force</h1>
+  </section>
+
+  <!-- Timeline -->
+  <section class="timeline">
+    <div class="timeline-card left reveal" 
+         data-title="🛫 Origins (Pre‑1947)" 
+         data-content="The roots of the PAF go back to the Royal Indian Air Force (RIAF) during British rule. In 1933, the British set up Air Force resources at Drigh Road (now PAF Base Faisal) in Karachi, which later became central to Pakistan’s air power.">
+      <h3>🛫 Origins (Pre‑1947)</h3>
+      <p>Roots in RIAF during British rule; Drigh Road base established in 1933.</p>
+    </div>
+
+    <div class="timeline-card right reveal" 
+         data-title="📆 1947–1950: Birth of the PAF" 
+         data-content="15 August 1947: Pakistan became independent — the Royal Pakistan Air Force (RPAF) was established the same day. Starting strength was modest: 24 Tempest II fighters, 16 Typhoons, transport & training aircraft, and just over 2,000 personnel. RPAF participated in the First Kashmir War (1947–48) mainly in transport & supply missions.">
+      <h3>📆 1947–1950: Birth of the PAF</h3>
+      <p>Independence and establishment of RPAF; modest fleet and personnel.</p>
+    </div>
+
+    <div class="timeline-card left reveal" 
+         data-title="📆 1950s: Growth & Identity" 
+         data-content="The PAF grew its fleet and began its transition into a modern air force. Jets like the F‑86 Sabre were introduced. On 23 March 1956, Pakistan became an Islamic Republic and the word 'Royal' was dropped, making it the Pakistan Air Force.">
+      <h3>📆 1950s: Growth & Identity</h3>
+      <p>Introduction of jets like F‑86 Sabre; transition to Pakistan Air Force in 1956.</p>
+    </div>
+
+    <div class="timeline-card right reveal" 
+         data-title="✈️ 1960s: First Major Combat – 1965 War" 
+         data-content="In the Indo‑Pakistan War of 1965, the PAF performed air defense and offensive operations, including strikes on Indian targets such as Pathankot Airbase. PAF pilots are credited with significant air victories.">
+      <h3>✈️ 1960s: First Major Combat – 1965 War</h3>
+      <p>PAF engaged in the 1965 war, achieving notable air victories.</p>
+    </div>
+
+    <div class="timeline-card left reveal" 
+         data-title="🛡️ 1971 War and Aftermath" 
+         data-content="During the 1971 War, PAF fought valiantly despite constrained resources, credited with shooting down several Indian aircraft. Post‑1971, PAF underwent reconstruction and modernization.">
+      <h3>🛡️ 1971 War and Aftermath</h3>
+      <p>PAF fought on two fronts; post‑war modernization followed.</p>
+    </div>
+
+    <div class="timeline-card right reveal" 
+         data-title="🚀 1980s–1990s: Modernization" 
+         data-content="PAF modernized by acquiring Mirage III/V, additional F‑16s, and expanding its transport and training fleet. Investments in air defense systems and radar coverage strengthened capabilities.">
+      <h3>🚀 1980s–1990s: Modernization</h3>
+      <p>Fleet expansion with Mirage III/V and F‑16s; improved radar and defense systems.</p>
+    </div>
+
+    <div class="timeline-card left reveal" 
+         data-title="✈️ 2010s: Joint Development & New Roles" 
+         data-content="PAF co‑developed the JF‑17 Thunder with China, a milestone in indigenous capability. Special units like Shooter Squadron were established for pilot training.">
+      <h3>✈️ 2010s: Joint Development</h3>
+      <p>JF‑17 Thunder co‑developed with China; new training units established.</p>
+    </div>
+
+    <div class="timeline-card right reveal" 
+         data-title="🗓️ 2020s: Modern Era & Recent Conflicts" 
+         data-content="In May 2025, PAF was involved in significant aerial clashes with India, one of the most intense confrontations since 1971. PAF claimed to have shot down several Indian aircraft, while India also claimed downing Pakistani aircraft.">
+      <h3>🗓️ 2020s: Modern Era & Recent Conflicts</h3>
+      <p>Recent clashes with India in 2025; intense aerial engagements.</p>
+    </div>
+
+    <div class="timeline-card left reveal" 
+         data-title="✈️ Modern Fleet & International Presence" 
+         data-content="PAF fleet now includes JF‑17 Thunder (Block II & III), F‑16 Fighting Falcons, IL‑78 aerial tankers, transport and surveillance aircraft. PAF demonstrates air‑to‑air refueling and long‑range capability, and participates in international air shows like RIAT 2025.">
+      <h3>✈️ Modern Fleet & International Presence</h3>
+      <p>JF‑17 Block III, F‑16s, IL‑78 tankers; showcased at RIAT 2025.</p>
+    </div>
+
+    <div class="timeline-card right reveal" 
+         data-title="🌍 International Exercises" 
+         data-content="PAF hosts and participates in large exercises like Exercise Indus Shield, focusing on multi‑domain air warfare training with foreign teams.">
+      <h3>🌍 International Exercises</h3>
+      <p>Exercises like Indus Shield with international partners.</p>
+    </div>
+
+    <div class="timeline-card left reveal" 
+         data-title="🏛️ Structure & Leadership" 
+         data-content="The PAF is led by the Chief of Air Staff (CAS), a four‑star Air Chief Marshal, appointed by the President of Pakistan. Air Chief Marshal Zaheer Ahmed Babar Sidhu currently serves as CAS, focusing on modernization and electronic warfare.">
+      <h3>🏛️ Structure & Leadership</h3>
+      <p>Led by Air Chief Marshal Zaheer Ahmed Babar Sidhu.</p>
+    </div>
+
+    <div class="timeline-card right reveal" 
+         data-title="🚁 Modern Capabilities & Strategic Role" 
+         data-content="The PAF protects Pakistan’s airspace and supports ground/naval operations. Modern emphasis includes advanced fighters (JF‑17 Block‑III, F‑16, J‑10), aerial refueling (IL‑78), UAVs for reconnaissance, and electronic/cyber warfare.">
+      <h3>🚁 Modern Capabilities & Strategic Role</h3>
+      <p>Advanced fighters, UAVs, refueling tankers, and cyber/electronic warfare.</p>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">History</h3>
+        <button class="modal-close" id="modalClose">×</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Content injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Wings of Valor – Pakistan Air Force. Educational project.</p>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add('active');
+        }
+      });
+    });
+
+    // Modal functionality
+    const cards = document.querySelectorAll('.timeline-card');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const modalClose = document.getElementById('modalClose');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        modalTitle.textContent = card.getAttribute('data-title');
+        modalBody.textContent = card.getAttribute('data-content');
+        modalBackdrop.style.display = 'flex';
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      modalBackdrop.style.display = 'none';
+    });
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) {
+        modalBackdrop.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

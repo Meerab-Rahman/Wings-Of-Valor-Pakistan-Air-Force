@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Wings of Valor – Pakistan Air Force</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+    header, footer {
+      background: #002147;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+    nav a, footer a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    section {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h2 {
+      color: #002147;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form {
+      background: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .stars {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+    .star {
+      font-size: 30px;
+      cursor: pointer;
+      color: #ccc;
+      transition: color 0.3s;
+    }
+    .star.selected, .star:hover {
+      color: #FFD700;
+    }
+    button {
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+
+    /* Acknowledgement Section Styling */
+    .acknowledgement {
+      background: #f9fafc;
+      padding: 50px 20px;
+      margin-top: 50px;
+    }
+    .ack-card {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-left: 6px solid #007BFF;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      font-family: 'Georgia', serif;
+    }
+    .ack-icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+    .ack-card h2 {
+      color: #002147;
+      margin-bottom: 20px;
+    }
+    .ack-card p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .ack-intro {
+      font-style: italic;
+      color: #444;
+    }
+    /* Fade-in animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Wings of Valor – Pakistan Air Force</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="history.html">History</a>
+      <a href="strength.html">Strength</a>
+      <a href="aircraft.html">Visual Gallery</a>
+      <a href="achievements.html">Achievements</a>
+      <a href="actions.html">Wings In Actions</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Feedback Form -->
+  <section>
+    <h2>Contact & Feedback</h2>
+    <form id="feedbackForm">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Your Feedback</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <label>Rate Us</label>
+      <div class="stars" id="starRating">
+        <span class="star" data-value="1">&#9733;</span>
+        <span class="star" data-value="2">&#9733;</span>
+        <span class="star" data-value="3">&#9733;</span>
+        <span class="star" data-value="4">&#9733;</span>
+        <span class="star" data-value="5">&#9733;</span>
+      </div>
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </section>
+
+  <!-- Acknowledgement Section -->
+  <section class="acknowledgement reveal">
+    <div class="ack-card">
+      <div class="ack-icon">🎓</div>
+      <h2>Acknowledgement</h2>
+      <p class="ack-intro">
+        “This project has been developed and presented by:
+        <br> Meerab Rahman (Reg. No: 250201086)
+        <br> Izza Rahman (Reg. No: 250201061)
+        <br> Aleeha Naweed (Reg. No: 250201002)”
+      </p>
+      <p>
+        Students of CS-06 (B), and submitted to <strong>Sir Hashim Ayyub</strong> and 
+        <strong>Mam Asia Aman</strong> under their kind supervision, in partial fulfillment of the course requirements.
+      </p>
+      <p>
+        We would like to express our sincere gratitude to our respected instructors for their continuous guidance, 
+        valuable feedback, and unwavering support throughout the development of this project. Their mentorship played 
+        a vital role in enhancing our academic and practical understanding.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Wings of Valor – Pakistan Air Force. Educational project.</p>
+  </footer>
+
+  <script>
+    // Star rating functionality
+    const stars = document.querySelectorAll('.star');
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = star.getAttribute('data-value');
+        stars.forEach(s => s.classList.remove('selected'));
+        for (let i = 0; i < selectedRating; i++) {
+          stars[i].classList.add('selected');
+        }
+      });
+    });
+
+    // Feedback form submission
+    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      if (selectedRating === 0) {
+        alert("Please select a star rating before submitting.");
+        return;
+      }
+
+      alert(`Thank you, ${name}! Your feedback has been submitted.\nRating: ${selectedRating} stars\nMessage: ${message}`);
+      this.reset();
+      stars.forEach(s => s.classList.remove('selected'));
+      selectedRating = 0;
+    });
+
+    // Fade-in reveal effect on scroll
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Wings in Action | Pakistan Air Force</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom, #0a0f1c, #101830);
+      color: #eaf9ff;
+      overflow-x: hidden;
+    }
+
+    /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 14px;
+      background: rgba(10,16,32,0.9);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 0 12px rgba(0,230,255,0.3);
+    }
+    nav a {
+      color: #eaf9ff;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 2px solid transparent;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+    }
+    nav a:hover {
+      color: #00e6ff;
+      border-bottom: 2px solid #00e6ff;
+    }
+
+    /* Section Header */
+    .section-header {
+      text-align: center;
+      padding: 60px 20px 20px;
+    }
+    .section-header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.4rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0;
+      color: #00e6ff;
+    }
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: #00e6ff;
+      margin: 16px auto;
+    }
+
+    /* Introductory Content */
+    .intro {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      text-align: center;
+      line-height: 1.8;
+      color: #a5b9c9;
+      padding: 0 20px;
+    }
+    .intro p:first-child {
+      font-weight: 600;
+      color: #eaf9ff;
+    }
+
+    /* Video Grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .video-card {
+      background: rgba(15,27,58,0.85);
+      border: 1px solid rgba(0,230,255,0.25);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 0 20px rgba(0,230,255,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .video-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 28px rgba(0,230,255,0.3);
+    }
+    .video-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      margin: 10px 0;
+      color: #00e6ff;
+    }
+    .video-card p {
+      font-size: 0.95rem;
+      color: #a5b9c9;
+      line-height: 1.6;
+    }
+    .video-card video {
+      width: 100%;
+      aspect-ratio: 9 / 16; /* 👈 portrait ratio */
+      border-radius: 8px;
+      background: #000;
+      object-fit: cover;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #a5b9c9;
+      border-top: 1px solid rgba(0,230,255,0.2);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="history.html">History</a>
+  <a href="strength.html">Strength</a>
+  <a href="aircraft.html">Visual Gallery</a>
+  <a href="achievements.html">Achievements</a>
+  <a href="actions.html">Wings In Actions</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- Section Header -->
+<div class="section-header">
+  <h1>WINGS IN ACTION</h1>
+  <div class="divider"></div>
+</div>
+
+<!-- Introductory Content -->
+<div class="intro">
+  <p>The Wings in Action section highlights the operational readiness, training excellence, and mission-oriented capabilities of the Pakistan Air Force.</p>
+  <p>Through advanced fighter jets, joint exercises, and humanitarian operations, the PAF demonstrates its commitment to national defense and regional stability. This section showcases selected video highlights of fighter jet maneuvers, training sorties, and operational drills, reflecting the professionalism, discipline, and technological strength of the Pakistan Air Force.</p>
+</div>
+
+<!-- Video Grid -->
+<div class="video-grid">
+  <div class="video-card"><video controls><source src="assets/videos/fighter1.mp4" type="video/mp4"></video><h3>Fighter Maneuver 1</h3><p>High-speed aerial maneuvers showcasing agility and precision.</p></div>
+  <div class="video-card"><video controls><source src="assets/videos/fighter2.mp4" type="video/mp4"></video><h3>Fighter Maneuver 2</h3><p>Formation flying drills demonstrating air superiority.</p></div>
+  <div class="video-card"><video controls><source src="assets/videos/training1.mp4" type="video/mp4"></video><h3>Training Sortie</h3><p>Cadets in advanced training exercises, discipline and skill.</p></div>
+  <div class="video-card"><video controls><source src="assets/videos/training2.mp4" type="video/mp4"></video><h3>Simulator Training</h3><p>Modern simulators preparing pilots for real-world missions.</p></div>
+  <div class="video-card"><video controls><source src="assets/videos/ops1.mp4" type="video/mp4"></video><h3>Operational Drill</h3><p>Joint drills highlighting readiness and coordination.</p></div>
+  <div class="video-card"><video controls><source src="assets/videos/ops2.mp4" type="video/mp4"></video><h3>Night Operation</h3><p>Precision missions under the cover of darkness.</p></div>
+  <div class="video-card"><video controls><source src="assets/videos/humanitarian1.mp4" type="video/mp4"></video><h3>Humanitarian Mission</h3><p>Disaster relief and medical evacuation missions.</p></div>
+  <div class="video-card"><video controls><source src="assets/videos/humanitarian2.mp4" type="video/mp4"></video><h3>Rescue Operation</h3><p>Flood and earthquake assistance missions.</p></div>
+  <div class="video-card"><video controls><source src="assets/videos/heritage1.mp4" type="video/mp4"></video><h3>Heritage & History 1</h3><p>Historic aircraft and legacy moments since 1947.</p></div>
+  <div class="video-card"><video controls><source src="assets/videos/heritage2.mp4" type="video/mp4"></video><h3>Heritage & History 2</h3><p>Air shows and parades celebrating PAF’s legacy.</p></div>
+  <div class="video-card"><video controls><source src="assets/videos/joint1.mp4" type="video/mp4"></video><h3>Joint Exercise</h3><p>International cooperation drills with allied air forces.</p></div>
+  <div class="video-card"><video controls><source src="assets/videos/tech1.mp4" type="video/mp4"></video><h3>Technology Showcase</h3><p>Advanced avionics and air defense systems in action.</p></div>
+</div>
+
+<footer>
+  © 2026 Wings of Valor — Pakistan Air Force
+</footer>
+
+</body>
+</html>

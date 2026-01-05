@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Wings of Valor – Pakistan Air Force Fleet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+/* Site-wide nav bar */
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 12px;
+  background: rgba(10,16,32,0.85);
+  border-bottom: 1px solid rgba(0,230,255,0.2);
+  box-shadow: 0 0 12px rgba(0,230,255,0.2);
+}
+.main-nav a {
+  color: #eaf9ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+.main-nav a:hover {
+  color: #00e6ff;
+  border-bottom: 2px solid #00e6ff;
+}
+
+/* Category nav (already present, but give it a unique class) */
+.category-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  background: rgba(0,0,0,0.6);
+  position: sticky;
+  top: 60px; /* sits below main nav */
+  z-index: 1000;
+}
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0a0f1c;
+      color: #eaf9ff;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(10,16,32,0.9);
+      padding: 15px;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      color: #00e6ff;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      box-shadow: 0 0 20px rgba(0,230,255,0.3);
+    }
+
+    /* Category Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 15px;
+      background: rgba(0,0,0,0.6);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav button {
+      background: transparent;
+      border: 1px solid #00e6ff;
+      color: #00e6ff;
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    nav button:hover {
+      background: #00e6ff;
+      color: #0a0f1c;
+      box-shadow: 0 0 12px #00e6ff;
+    }
+
+    /* Gallery Sections */
+    section.gallery {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    section.gallery img {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      transition: transform 0.6s ease, filter 0.6s ease;
+    }
+    section.gallery:hover img {
+      transform: scale(1.05);
+      filter: blur(2px) brightness(0.7);
+    }
+
+    /* Overlay storytelling */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: opacity 0.5s ease;
+      padding: 20px;
+    }
+    section.gallery:hover .overlay {
+      opacity: 1;
+    }
+    .overlay h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #00e6ff;
+      text-shadow: 0 0 12px #00e6ff;
+    }
+    .overlay p {
+      max-width: 600px;
+      font-size: 1.1rem;
+      color: #eaf9ff;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 2000;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      margin-bottom: 20px;
+    }
+    .lightbox h3 {
+      color: #00e6ff;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .lightbox p {
+      color: #eaf9ff;
+      max-width: 600px;
+      text-align: center;
+    }
+    .lightbox button {
+      margin-top: 20px;
+      padding: 8px 16px;
+      background: #00e6ff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #0a0f1c;
+    }
+  </style>
+</head>
+<body>
+
+<header>Wings of Valor – Pakistan Air Force Fleet</header>
+
+<!-- Site-wide Navigation Bar -->
+<nav class="main-nav">
+  <a href="index.html">Home</a>
+  <a href="history.html">History</a>
+  <a href="strength.html">Strength</a>
+  <a href="aircraft.html">Visual Gallery</a>
+  <a href="achievements.html">Achievements</a>
+  <a href="actions.html">Wings In Actions</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- Category Navigation (gallery-specific) -->
+<nav class="category-nav">
+  <button onclick="scrollToSection('fighters')">✈ Fighters</button>
+  <button onclick="scrollToSection('operations')">🎯 Operations</button>
+  <button onclick="scrollToSection('airdefense')">📡 Air Defense</button>
+  <button onclick="scrollToSection('training')">🎓 Training</button>
+  <button onclick="scrollToSection('humanitarian')">🚑 Humanitarian</button>
+  <button onclick="scrollToSection('heritage')">🕰 Heritage</button>
+</nav>
+
+<!-- Purpose Intro -->
+<section style="padding:40px; text-align:center; background:#0f1b3a;">
+  <h2 style="color:#00e6ff; font-family:'Orbitron';">Purpose of the Fleet Section</h2>
+  <p>The PAF Fleet is not just a collection of images. It is a visual story that showcases <strong>Power, Precision, Professionalism, Heritage, Modernization</strong>. This section allows visitors to feel the strength of the Pakistan Air Force rather than just read about it.</p>
+</section>
+
+<!-- Fighter Aircraft Gallery -->
+<section id="fighters" class="gallery">
+  <img src="assets/images/jf17.jpg" alt="JF-17 Thunder">
+  <div class="overlay">
+    <h2>JF-17 Thunder</h2>
+    <p>The backbone of modern PAF airpower. Multi-role fighter built for speed, strike, and superiority.</p>
+  </div>
+</section>
+
+<section class="gallery">
+  <img src="assets/images/f16.jpg" alt="F-16 Falcon">
+  <div class="overlay">
+    <h2>F-16 Fighting Falcon</h2>
+    <p>Precision strike and air superiority. Trusted in combat and exercises worldwide.</p>
+  </div>
+</section>
+
+<!-- Operations Gallery -->
+<section id="operations" class="gallery">
+  <img src="assets/images/night-ops.jpg" alt="Night Operations">
+  <div class="overlay">
+    <h2>Night Operations</h2>
+    <p>Always alert. Always ready. Precision missions under the cover of darkness.</p>
+  </div>
+</section>
+
+<!-- Air Defense Gallery -->
+<section id="airdefense" class="gallery">
+  <img src="assets/images/radar.jpg" alt="Radar Station">
+  <div class="overlay">
+    <h2>Radar & Air Defense</h2>
+    <p>Protecting the skies — 24/7 vigilance with cutting-edge detection and missile systems.</p>
+  </div>
+</section>
+
+<!-- Training Gallery -->
+<section id="training" class="gallery">
+  <img src="assets/images/training.jpg" alt="Pilot Training">
+  <div class="overlay">
+    <h2>Training & Personnel</h2>
+    <p>Skill. Discipline. Excellence. Cadets and crew shaping the future of air power.</p>
+  </div>
+</section>
+
+<!-- Humanitarian Gallery -->
+<section id="humanitarian" class="gallery">
+  <img src="assets/images/c130-relief.jpg" alt="C-130 Humanitarian Mission">
+  <div class="overlay">
+    <h2>Humanitarian Missions</h2>
+    <p>Serving the nation beyond combat — disaster relief, medical evacuations, and humanitarian aid.</p>
+  </div>
+</section>
+
+<!-- Heritage Gallery -->
+<section id="heritage" class="gallery">
+  <img src="assets/images/heritage.jpg" alt="Historical Aircraft">
+  <div class="overlay">
+    <h2>Heritage & History</h2>
+    <p>A legacy built since 1947. Honoring the pioneers and historic aircraft of the PAF.</p>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+  <h3 id="lightbox-title"></h3>
+  <p id="lightbox-desc"></p>
+  <button onclick="closeLightbox()">Close</button>
+</div>
+
+<script>
+  // Smooth scroll to section
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  }
+
+  // Lightbox functionality
+  const galleries = document.querySelectorAll('section.gallery');
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbTitle = document.getElementById('lightbox-title');
+  const lbDesc = document.getElementById('lightbox-desc');
+
+  galleries.forEach(section => {
+    const img = section.querySelector('img');
+    const title = section.querySelector('.overlay h2').textContent;
+    const desc = section.querySelector('.overlay p').textContent;
+
+    img.addEventListener('click', () => {
+      lbImg.src = img.src;
+      lbTitle.textContent = title;
+      lbDesc.textContent = desc;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.style.display = 'none';
+  }
+</script>
+</body>
+</html>

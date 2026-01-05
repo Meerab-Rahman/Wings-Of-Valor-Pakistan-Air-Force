@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Strength | Wings of Valor – Pakistan Air Force</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a1020;
+      --panel: #0f1b3a;
+      --panel-2: #13244d;
+      --accent: #00e6ff;
+      --accent-2: #66fcf1;
+      --text: #eaf9ff;
+      --muted: #a5b9c9;
+      --gold: #FFD700;
+      --white: #ffffff;
+    }
+
+    /* Global */
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 20% 10%, #0d1440, var(--bg)) fixed;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(10,16,32,0.85);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(0,230,255,0.2);
+      box-shadow: 0 0 20px rgba(0,230,255,0.1);
+    }
+    .nav {
+      max-width: 1200px; margin: 0 auto; padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand {
+      font-family: 'Orbitron', sans-serif; letter-spacing: 0.04em;
+      color: var(--accent); font-weight: 600; font-size: 1.1rem;
+      text-shadow: 0 0 8px rgba(0,230,255,0.5);
+    }
+    .nav a {
+      color: var(--text); text-decoration: none; margin-left: 16px; font-weight: 600;
+      border-bottom: 2px solid transparent; transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .nav a:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* Hero (cockpit parallax) */
+    .hero {
+  position: relative;
+  height: 105vh;
+  min-height: 100px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;   /* makes video behave like background image */
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10,16,32,0.6), rgba(10,16,32,0.85));
+  z-index: 1;
+}
+
+.hero-inner {
+  z-index: 2;
+  padding: 0 20px;
+  color: #fff;
+}
+.hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 10px 0;
+  text-shadow: 0 0 14px rgba(255,255,255,0.2), 0 0 24px rgba(0,230,255,0.4);
+}
+.hero p {
+  color: #a5b9c9;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  max-width: 900px;
+  margin: 0 auto;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10,16,32,0.6), rgba(10,16,32,0.85)); /* overlay for readability */
+  z-index: 0;
+}
+.hero-inner {
+  z-index: 1;
+  padding: 0 20px;
+}
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(10,16,32,0.6), rgba(10,16,32,0.85));
+      z-index: 0;
+    }
+    .hero-inner { z-index: 1; padding: 0 20px; }
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0 0 10px 0;
+      color: var(--white);
+      text-shadow: 0 0 14px rgba(255,255,255,0.2), 0 0 24px rgba(0,230,255,0.4);
+      animation: slideDown 900ms ease-out both;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: clamp(1rem, 2.4vw, 1.2rem);
+      max-width: 900px; margin: 0 auto;
+      animation: fadeIn 1200ms ease-out both 200ms;
+    }
+    @keyframes slideDown { from {transform: translateY(-14px); opacity:0} to {transform: translateY(0); opacity:1} }
+    @keyframes fadeIn { from {opacity:0} to {opacity:1} }
+
+    .audio-controls {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.controls button {
+  background: #00e6ff;
+  border: none;
+  color: #00121f;
+  font-weight: bold;
+  padding: 10px 16px;
+  margin: 0 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.controls button:hover {
+  background: #66fcf1;
+  box-shadow: 0 0 12px rgba(0,230,255,0.6);
+}
+
+    /* Sections container */
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+    /* Dashboard grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    /* Card / panel styling */
+    .card {
+      grid-column: span 6;
+      background: linear-gradient(180deg, var(--panel), var(--panel-2));
+      border: 1px solid rgba(0,230,255,0.25);
+      border-radius: 14px;
+      box-shadow: 0 0 32px rgba(0,230,255,0.08), inset 0 0 24px rgba(255,255,255,0.02);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 46px rgba(0,230,255,0.22);
+    }
+    .card::after {
+      content: ""; position: absolute; inset: 0;
+      border-radius: 14px;
+      padding: 2px;
+      background: conic-gradient(from 180deg, rgba(0,230,255,0.2), rgba(255,215,0,0.15), rgba(102,252,241,0.2), rgba(0,230,255,0.2));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0; transition: opacity 200ms ease;
+    }
+    .card:hover::after { opacity: 1; }
+    .card h3 {
+      font-family: 'Orbitron', sans-serif; letter-spacing: 0.02em;
+      margin: 0 0 12px 0; color: var(--accent);
+      text-shadow: 0 0 10px rgba(0,230,255,0.4);
+    }
+    .card p { color: var(--text); margin: 6px 0 12px 0; }
+    .muted { color: var(--muted); }
+
+    /* Full-width card */
+    .span-12 { grid-column: span 12; }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 600ms ease, transform 600ms ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* Counter */
+    .counter {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--white);
+      text-shadow: 0 0 10px rgba(255,255,255,0.1), 0 0 20px rgba(0,230,255,0.2);
+      margin-bottom: 8px;
+    }
+
+    /* List with neon bullets */
+    .list {
+      list-style: none; padding-left: 0; margin: 0;
+    }
+    .list li {
+      padding: 6px 0 6px 20px; position: relative; color: var(--text);
+    }
+    .list li::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%;
+      position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    /* Aircraft grid */
+    .aircraft-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .aircraft-card {
+      background: #122143;
+      border: 1px solid rgba(0,230,255,0.25);
+      border-radius: 12px; overflow: hidden; position: relative;
+      box-shadow: 0 0 22px rgba(0,230,255,0.08);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+    .aircraft-card:hover { transform: translateY(-4px); box-shadow: 0 0 36px rgba(0,230,255,0.22); }
+    .aircraft-card img { width: 100%; height: 140px; object-fit: cover; display: block; }
+    .aircraft-info { padding: 12px; }
+    .aircraft-name { font-weight: 600; color: var(--white); }
+    .aircraft-role { color: var(--muted); font-size: 0.95rem; }
+
+    /* Hover overlay */
+    .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,230,255,0.12), rgba(0,230,255,0.85));
+      color: #00121f; padding: 12px; opacity: 0; transition: opacity 220ms ease;
+      font-weight: 600; display: grid; place-items: center; text-align: center;
+    }
+    .aircraft-card:hover .overlay { opacity: 1; }
+
+    /* Filter buttons */
+    .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+    .btn {
+      background: transparent; color: var(--accent); border: 1px solid var(--accent);
+      border-radius: 22px; padding: 8px 14px; cursor: pointer; font-weight: 600;
+      transition: background 180ms ease, box-shadow 180ms ease, color 180ms ease;
+    }
+    .btn:hover { background: var(--accent); color: #00121f; box-shadow: 0 0 16px rgba(0,230,255,0.6); }
+    .btn.active { background: var(--accent); color: #00121f; }
+
+    /* Radar panel */
+    .radar {
+      width: 220px; height: 220px; border: 2px solid var(--accent);
+      border-radius: 50%; margin: 10px auto 16px; position: relative;
+      box-shadow: 0 0 24px rgba(0,230,255,0.3), inset 0 0 12px rgba(0,230,255,0.2);
+    }
+    .sweep {
+      position: absolute; inset: 0;
+      background: conic-gradient(from 0deg, rgba(0,230,255,0.1) 0deg, rgba(0,230,255,0.8) 50deg, transparent 50deg);
+      border-radius: 50%;
+      animation: spin 2.2s linear infinite;
+    }
+    .blip {
+      position: absolute; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 10px var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .blip.b1 { top: 22%; left: 62%; }
+    .blip.b2 { top: 68%; left: 28%; animation-delay: 0.4s; }
+    .blip.b3 { top: 46%; left: 76%; animation-delay: 0.8s; }
+    @keyframes spin { from {transform: rotate(0)} to {transform: rotate(360deg)} }
+    @keyframes pulse { 0%,100% { transform: scale(1); opacity:1 } 50% { transform: scale(1.5); opacity: 0.6 } }
+
+    /* Capability icons */
+    .cap-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .cap {
+      background: #101c3a; border: 1px solid rgba(0,230,255,0.25);
+      border-radius: 12px; padding: 14px; text-align: center;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+    .cap:hover { transform: translateY(-3px); box-shadow: 0 0 20px rgba(0,230,255,0.26); }
+    .cap-icon {
+      width: 42px; height: 42px; margin: 0 auto 8px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--accent), transparent 70%);
+      box-shadow: 0 0 12px var(--accent);
+    }
+    .cap h4 { margin: 6px 0; color: var(--white); }
+    .cap p { margin: 0; font-size: 0.94rem; color: var(--muted); }
+
+    /* Modernization highlights */
+    .highlight {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px; margin-top: 10px;
+    }
+    .hl {
+      background: #102246; border: 1px solid rgba(255,215,0,0.35);
+      border-radius: 12px; padding: 14px;
+      box-shadow: 0 0 20px rgba(255,215,0,0.15);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+    .hl:hover { transform: translateY(-3px); box-shadow: 0 0 26px rgba(255,215,0,0.28); }
+    .hl h4 { margin: 6px 0; color: var(--gold); }
+    .hl p { margin: 0; color: var(--text); }
+
+    /* Footer */
+    footer {
+      background: rgba(10,16,32,0.9);
+      border-top: 1px solid rgba(0,230,255,0.2);
+      text-align: center; padding: 18px; margin-top: 30px;
+      color: var(--accent);
+    }
+
+    /* Responsive card spans */
+    @media (max-width: 960px) {
+      .card { grid-column: span 12; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="nav">
+      <div class="brand">Wings of Valor — Pakistan Air Force</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="history.html">History</a>
+        <a href="strength.html">Strength</a>
+        <a href="aircraft.html">Visual Gallery</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="actions.html">Wings In Actions</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <!-- Hero -->
+<section class="hero">
+  <!-- Background video -->
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="assets/videos/paf-hero.mp4" type="video/mp4">
+    <!-- Fallback text -->
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Overlay for readability -->
+  <div class="hero-overlay"></div>
+
+  <!-- Foreground text -->
+  <div class="hero-inner">
+    <h1>Interactive Command Dashboard</h1>
+    <p>Explore personnel strength, aircraft fleet, air defense, operational capabilities, and modernization — in a cockpit-inspired interface.</p>
+  </div>
+</section>
+
+<!-- Audio Controls Section -->
+<section class="audio-controls">
+  <audio id="bgAudio" autoplay loop>
+    <source src="assets/audio/paf-theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="controls">
+    <button id="muteBtn">Mute</button>
+    <button id="volDownBtn">Volume -</button>
+    <button id="volUpBtn">Volume +</button>
+  </div>
+</section>
+
+
+  <!-- Dashboard: personnel, air defense, operations, modernization -->
+  <main class="container">
+    <div class="grid">
+      <!-- Personnel Strength -->
+      <section class="card reveal">
+        <h3>Personnel strength</h3>
+        <div class="counter" id="personnelCounter">0</div>
+        <p>Approx. 65,000–70,000 active personnel including pilots, engineers, technicians, and support staff.</p>
+        <ul class="list">
+          <li>Combat Squadrons — Frontline fighter units</li>
+          <li>Transport & Logistics Units — Airlifting troops, supplies, humanitarian aid</li>
+          <li>Specialized Reconnaissance & UAV Units — Drone and surveillance operations</li>
+          <li>Air Force Academy — Risalpur: Training center for new pilots and officers</li>
+        </ul>
+        <p class="muted">Highly trained fighter pilots with combat and peacekeeping experience.</p>
+      </section>
+
+      <!-- Air Defense & Missiles -->
+      <section class="card reveal">
+        <h3>Air defense & missiles</h3>
+        <div class="radar">
+          <div class="sweep"></div>
+          <div class="blip b1"></div>
+          <div class="blip b2"></div>
+          <div class="blip b3"></div>
+        </div>
+        <p>Integrated Air Defense Network with radar systems covering all major airspace.</p>
+        <p>Short, medium, and long-range surface-to-air missiles protect strategic locations.</p>
+        <p>Electronic Warfare capabilities for jamming and cyber defense.</p>
+      </section>
+
+      <!-- Operational Capabilities -->
+      <section class="card reveal">
+        <h3>Operational capabilities</h3>
+        <div class="cap-grid">
+          <div class="cap">
+            <div class="cap-icon"></div>
+            <h4>Air superiority</h4>
+            <p>Control of airspace during conflicts; deterrence and rapid response.</p>
+          </div>
+          <div class="cap">
+            <div class="cap-icon"></div>
+            <h4>Close air support (CAS)</h4>
+            <p>Precision support to ground forces during operations.</p>
+          </div>
+          <div class="cap">
+            <div class="cap-icon"></div>
+            <h4>Recon & UAV operations</h4>
+            <p>Real-time intelligence via UAVs and surveillance assets.</p>
+          </div>
+          <div class="cap">
+            <div class="cap-icon"></div>
+            <h4>Air mobility & logistics</h4>
+            <p>Rapid deployment of troops, equipment, and humanitarian aid.</p>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:10px;">Joint exercises & international operations with allied air forces for training and disaster relief.</p>
+      </section>
+
+      <!-- Modernization & Strategic Assets -->
+      <section class="card reveal">
+        <h3>Modernization & strategic assets</h3>
+        <div class="highlight">
+          <div class="hl">
+            <h4>JF‑17 Block III</h4>
+            <p>Advanced avionics, AESA radar, air‑to‑air refueling capability.</p>
+          </div>
+          <div class="hl">
+            <h4>Smart munitions</h4>
+            <p>Precision‑guided bombs and missiles like Ra’ad and Hatf air‑launched variants.</p>
+          </div>
+          <div class="hl">
+            <h4>Electronic warfare suite</h4>
+            <p>On‑board radar jammers, stealth detection, cyber operations.</p>
+          </div>
+          <div class="hl">
+            <h4>Satellite integration</h4>
+            <p>Early warning, reconnaissance, and communication networks.</p>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:10px;">Strategic reach enhanced by air‑to‑air refueling, advanced sensors, and network‑centric operations.</p>
+      </section>
+
+      <!-- Aircraft Fleet (full width) -->
+      <section class="card span-12 reveal">
+        <h3>Aircraft fleet</h3>
+
+        <!-- Filters -->
+        <div class="filters">
+          <button class="btn active" data-filter="all">All</button>
+          <button class="btn" data-filter="fighter">Fighters</button>
+          <button class="btn" data-filter="transport">Transport</button>
+          <button class="btn" data-filter="support">Support/Refueling</button>
+          <button class="btn" data-filter="uav">UAV/Recon</button>
+          <button class="btn" data-filter="heli">Helicopters</button>
+        </div>
+
+        <div class="aircraft-grid" id="aircraftGrid">
+          <!-- Fighters -->
+          <div class="aircraft-card" data-type="fighter">
+            <img src="assets/images/jf17.jpg" alt="JF-17 Thunder">
+            <div class="aircraft-info">
+              <div class="aircraft-name">JF‑17 Thunder (Block II/III)</div>
+              <div class="aircraft-role">Multi‑role fighter</div>
+            </div>
+            <div class="overlay">Strike & air superiority; joint development with China; Block III with AESA radar.</div>
+          </div>
+
+          <div class="aircraft-card" data-type="fighter">
+            <img src="assets/images/f16.jpg" alt="F-16 Fighting Falcon">
+            <div class="aircraft-info">
+              <div class="aircraft-name">F‑16 Fighting Falcon</div>
+              <div class="aircraft-role">Air superiority / tactical strike</div>
+            </div>
+            <div class="overlay">Long‑range strike, precision targeting, multirole combat platform.</div>
+          </div>
+
+          <div class="aircraft-card" data-type="fighter">
+            <img src="assets/images/mirage.jpg" alt="Mirage III/V">
+            <div class="aircraft-info">
+              <div class="aircraft-name">Mirage III / V</div>
+              <div class="aircraft-role">Supersonic strike & interception</div>
+            </div>
+            <div class="overlay">Legacy deep‑strike platform; versatile mission roles.</div>
+          </div>
+
+          <!-- Transport & Support -->
+          <div class="aircraft-card" data-type="transport">
+            <img src="assets/images/c130.jpg" alt="C-130 Hercules">
+            <div class="aircraft-info">
+              <div class="aircraft-name">C‑130 Hercules</div>
+              <div class="aircraft-role">Heavy transport & logistics</div>
+            </div>
+            <div class="overlay">Airlift, resupply, and humanitarian relief missions.</div>
+          </div>
+
+          <div class="aircraft-card" data-type="support">
+            <img src="assets/images/il78.jpg" alt="IL-78 Midas">
+            <div class="aircraft-info">
+              <div class="aircraft-name">IL‑78 Midas</div>
+              <div class="aircraft-role">Air‑to‑air refueling</div>
+            </div>
+            <div class="overlay">Extends fighter range and endurance; strategic force multiplier.</div>
+          </div>
+
+          <!-- UAV / Recon -->
+          <div class="aircraft-card" data-type="uav">
+            <img src="assets/images/uav.jpg" alt="Shaheen UAV">
+            <div class="aircraft-info">
+              <div class="aircraft-name">Shaheen UAVs</div>
+              <div class="aircraft-role">Reconnaissance & surveillance</div>
+            </div>
+            <div class="overlay">High‑altitude surveillance and target acquisition for real‑time intelligence.</div>
+          </div>
+
+          <!-- Helicopters -->
+          <div class="aircraft-card" data-type="heli">
+            <img src="assets/images/aw139.jpg" alt="AW139 Helicopter">
+            <div class="aircraft-info">
+              <div class="aircraft-name">AW139 / Mi‑17 / SA 330 Puma</div>
+              <div class="aircraft-role">Tactical transport, SAR & CAS</div>
+            </div>
+            <div class="overlay">Rescue, utility transport, and close air support roles.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    © 2026 Wings of Valor — Pakistan Air Force
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+
+    // Animated personnel counter (to ~68,000)
+    const counterEl = document.getElementById('personnelCounter');
+    const targetNumber = 68000; // midpoint of 65–70k
+    let startTs = null;
+    const duration = 1600; // ms
+    function animateCounter(ts) {
+      if (!startTs) startTs = ts;
+      const progress = Math.min((ts - startTs) / duration, 1);
+      const current = Math.floor(progress * targetNumber);
+      counterEl.textContent = current.toLocaleString();
+      if (progress < 1) requestAnimationFrame(animateCounter);
+      else counterEl.textContent = '68,000+';
+    }
+    requestAnimationFrame(animateCounter);
+
+    // Aircraft filters
+    const buttons = document.querySelectorAll('.btn');
+    const cards = document.querySelectorAll('#aircraftGrid .aircraft-card');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          const show = filter === 'all' || card.dataset.type === filter;
+          card.style.display = show ? 'block' : 'none';
+        });
+      });
+    });
+  </script>
+  <script>
+  const audio = document.getElementById('bgAudio');
+  const muteBtn = document.getElementById('muteBtn');
+  const volDownBtn = document.getElementById('volDownBtn');
+  const volUpBtn = document.getElementById('volUpBtn');
+
+  // Toggle mute/unmute
+  muteBtn.addEventListener('click', () => {
+    audio.muted = !audio.muted;
+    muteBtn.textContent = audio.muted ? 'Unmute' : 'Mute';
+  });
+
+  // Decrease volume
+  volDownBtn.addEventListener('click', () => {
+    audio.volume = Math.max(0, audio.volume - 0.1); // step down by 0.1
+  });
+
+  // Increase volume
+  volUpBtn.addEventListener('click', () => {
+    audio.volume = Math.min(1, audio.volume + 0.1); // step up by 0.1
+  });
+</script>
+</body>
+</html>
